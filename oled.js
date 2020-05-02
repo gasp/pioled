@@ -1,6 +1,6 @@
 const i2c = require('i2c-bus')
-const oledi2c = require('oled-i2c-bus');
-const font = require('oled-font-5x7');
+const oledi2c = require('oled-i2c-bus')
+const font = require('oled-font-5x7')
 
 const i2cBus = i2c.openSync(1)
 
@@ -13,8 +13,16 @@ class Oled {
     }
     this.screen = new oledi2c(i2cBus, opts)
   }
+  clear() {
+    this.screen.clearDisplay()
+  }
   switch(state) {
     console.log(`oled switched ${state ? 'on' : 'off'}`)
+    if (state) {
+      this.screen.turnOnDisplay()
+    } else {
+      this.screen.turnOffDisplay()
+    }
   }
   writeLine(line, i) {
     this.screen.setCursor(0, i * 8)
