@@ -4,8 +4,18 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon",
+    "start": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "nodemonConfig": {
+    "verbose": true,
+    "watch": [
+      "*.js",
+      "lib/*.js"
+    ],
+    "ignore": [
+      "*.png"
+    ]
   },
   "author": "",
   "license": "ISC",

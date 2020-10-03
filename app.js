@@ -1,38 +1,13 @@
-const Oled = require('./oled')
-const startup = require('./startup')
+// const Oled = require('./lib/oled')
 const clock = require('./lib/clock')
-const server = require('./server')
+const server = require('./lib/server')
 
-const oled = new Oled()
-
-const light = clock(() => {
-  oled.clear()
-  oled.switch(false)
+// const oled = new Oled()
+const boot = clock(() => {
+  // todo: play boot sequence on oled here
+  console.log('booted')
 })
 
-let exceptionOccured = false
-process.on('uncaughtException', (err) => {
-    console.log('Caught exception: ' + err)
-    exceptionOccured = true
-    process.exit()
-})
-
-process.on('exit', code => {
-    light.stop()
-    if (exceptionOccured) console.log('Exception occured')
-    else console.log('Kill signal received')
-});
-
-light.start()
-
-oled.switch(true)
-oled.clear()
-
-startup(oled)
-
-// server(text => {
-//   clock(() => {
-//     oled.clear()
-//     oled.writeLine(text, 1)
-//   })
-// })
+boot.start()
+const cb = a => console.log(a)
+server(cb)
