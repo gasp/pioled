@@ -7,6 +7,8 @@ const startup = (oled) => {
   // there can be several ips
   ips.forEach((ipLine, index) =>
     oled.writeLine(`${ipLine.ifname} ${ipLine.address}`, 2 + index))
+  if (!ips.length)
+    oled.writeLine('no network', 2)
 }
 
 module.exports = startup

@@ -1,0 +1,20 @@
+[Unit]
+Description=oled service and http server
+Documentation=https://forge.freelancis.net/gasp/pioled
+After=network.target
+After=systemd-user-sessions.service
+After=network-online.target
+
+[Service]
+Environment=NODE_PORT=3142
+User=pi
+Type=simple
+ExecStart=node /home/pi/oled/app.js
+TimeoutSec=30
+Restart=on-failure
+RestartSec=30
+StartLimitInterval=350
+StartLimitBurst=10
+
+[Install]
+WantedBy=multi-user.target

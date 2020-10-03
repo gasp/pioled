@@ -1,6 +1,7 @@
 const Oled = require('./oled')
 const startup = require('./startup')
 const clock = require('./lib/clock')
+const server = require('./server')
 
 const oled = new Oled()
 
@@ -28,3 +29,10 @@ oled.switch(true)
 oled.clear()
 
 startup(oled)
+
+// server(text => {
+//   clock(() => {
+//     oled.clear()
+//     oled.writeLine(text, 1)
+//   })
+// })
