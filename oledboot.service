@@ -1,0 +1,11 @@
+[Unit]
+Description=Oled power on and off
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/vgaoff start #find something here
+ExecStop=/usr/bin/vgaoff stop
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
