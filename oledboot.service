@@ -3,8 +3,8 @@ Description=Oled power on and off
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/vgaoff start #find something here
-ExecStop=/usr/bin/vgaoff stop
+ExecStart=cd /home/pi/pioled/ && node boot.js
+ExecStop=echo "switch off oled"
 RemainAfterExit=yes
 
 [Install]
