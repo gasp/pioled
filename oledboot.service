@@ -3,7 +3,7 @@ Description=Oled power on and off
 
 [Service]
 Type=oneshot
-ExecStart=cd /home/pi/pioled/ && node boot.js
+ExecStart=/home/pi/pioled/boot.sh
 ExecStop=echo "switch off oled"
 RemainAfterExit=yes
 
